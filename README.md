@@ -55,3 +55,22 @@ In this step we first convert the string to lowercase. We remove all the punctua
 
 The [sample_preprocessed.csv](sample_preprocessed.csv) file contains the data after performing steps 3, 4, 5 and 6.
 
+## Training Data (Context - Response pairs)
+
+For training a Neural Conversation Model, we need context - respose pair (to treat it as a SMT problem where the input and output are same semtence in two different languages).
+
+For an example conversation like [U1 A1 U2 A2 A3 U3 A4] where Ui refers to a user message and Ai refers to an assistant message, Context-Response pairs are generated as follows:
+
+Context [U1] Response [A1]
+
+Context [U1 A1 U2] Response [A2]
+
+Context [U1 A1 U2 A2] Response [A3]
+
+Context [U1 A1 U2 A2 A3 U3] Response [A4]
+
+- The file [sample_human_context_response.tsv](sample_human_context_response.tsv) contains such context response pairs, where the response is sent by a human assistant. While in the file [sample_bot_context_response.tsv](sample_bot_context_response.tsv), the responses are sent by bot.
+
+- Different messages from the same speaker are separated by a particular token while messages representing end of turn i.e switching of speaker between user and agent are represented by a separate token.
+
+- The context part is limited to maximum 160 words 
