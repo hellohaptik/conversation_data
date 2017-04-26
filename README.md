@@ -18,14 +18,16 @@ Users usually set multiple reminders on Haptik. For example, the drinking water 
 
 The [sample_pruned_chats_unames.csv](sample_pruned_chats_unames.csv) file contains the data after performing the steps 1,2. You will see a large difference in size of the data because of the reasons explained above.
 
-3. Replace Entities
+3. **Replace Entities**
+
 In this step we replace the original text of the named entities date, time ,phone number, user name and assistant name by the *“\_date\_”, “\_time\_”, “\_phone\_”, “\_name\_”, “\_name\_”* tags respectively. This reduces the size of vocabulary significantly. In our scenario, the value of the entity is not important but only its presence is important. A separate object maintains the entities identified (explained in hybrid). For identifying the entities, we use the in-house [NER](https://github.com/hellohaptik/chatbot_ner).
 
 *Ex. Raw query:* Remind me to go to gym tomorrow at 5pm
 
 *Preprocessed query:* Remind me to go to gym \_date\_ at \_time\_ 
 
-4. Structured messages
+4. **Structured messages**
+
 This step involves handling of UI elements. In case of an UI element, we simply replace the text with the corresponding ID (every structured outbound UI element has an associated ID). In case of the filled UI elements sent by an user, we replace the element values with element keys for all the filled element fields.
 
 *Ex. Query:* 
@@ -37,7 +39,7 @@ Time: 6:05 AM”
 
 *Preprocessed query:* “wake up call date \_date\_ time \_time\_” 
 
-5. Extracting actions from message
+5. **Extracting actions from message**
 
 This is a crucial part of the preprocessing step. The corpus consists of raw text messages exchanged between user and the haptik assistant. But being an utility product, just a text response is not enough to cater the user queries. We need a mechanism to identify the action that needs to be performed. While setting up or cancelling a reminder, an acknowledgement message is sent to the user. In this step of preprocessing, we try to utilize these messages and tag them as an action. Whenever an action tag is predicted as a response by the neural model, we perform that action by calling corresponding APIs.
 
@@ -47,9 +49,9 @@ This is a crucial part of the preprocessing step. The corpus consists of raw tex
 
 *Action:* set a medicine reminder 
 
-6. Orthography
+6. **Orthography**
 
 In this step we first convert the string to lowercase. We remove all the punctuation marks. We replace all the numeric values with “\_numeral\_” tag. At the end of this step, the data can contain characters only from set (a-z) and a special character (“\_”). This step helps reduce the vocabulary size by a significant fraction. While this step helps training on smaller data, the downside of this approach is that, we have to introduce a post-processing step for making the response look appropriate.
 
-The [sample_preprocessed.csv](sample_preprocessed.csv) file contains the data after performing steps 3, 4 and 5.
+The [sample_preprocessed.csv](sample_preprocessed.csv) file contains the data after performing steps 3, 4, 5 and 6.
 
