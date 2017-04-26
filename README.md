@@ -1,5 +1,5 @@
 # conversation_data
-This repository contains the sample data used for training the **"Neural Conversational Model"** for the *Reminders* domain, in the context of [Haptik](https://www.haptik.ai)
+This repository contains the sample data used for training the **"Neural Conversational Model"** for the *Reminders* domain, in the context of [Haptik](http://www.haptik.ai)
 
 ## Overview
 The corpus comprises of dyadic conversations from the Reminders domain. It is a collection of messages exchanged between Haptik users and chat assistants (responses from humans or the Rule Based ChatBot). The original corpus contains data collected over the past two years. This repository contains a sample data from the original corpus. The messages include casual queries, out of domain requests, push notifications sent to user to start a new conversation or to keep them engaged. The messages are observed to be mostly in English language but significant proportion of data also consists of code-mixed and code-switched messages - primarily English code-mixed with Hindi. In the original corpus, each message has rich metadata accompanying it – user info (age, gender, location, device, etc.), timestamps and type of message (e.g. simple text, UI element, form, etc). The UI elements are represented in the haptik specific custom format in the text corpus.
