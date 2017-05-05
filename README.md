@@ -74,3 +74,13 @@ Context [U1 A1 U2 A2 A3 U3] Response [A4]
 - Different messages from the same speaker are separated by a particular token while messages representing end of turn i.e switching of speaker between user and agent are represented by a separate token.
 
 - The context part is limited to maximum 160 words 
+
+## Terminology
+
+- **coll_id:** User ID
+
+- **conv_no:** User's session number (one conversation -> one chat session)
+
+- **Direction:** True -> Message is sent by user; False -> message is sent by Assistant (human or bot)
+
+- **msg_type:** Various types of messages varying in formats (haptik specific). Some important msg types include *22* -> reminder notification; *0* -> sender is a human; *17* -> form
